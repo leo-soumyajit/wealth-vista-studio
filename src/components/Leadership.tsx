@@ -1,6 +1,7 @@
 import { Linkedin, Mail, CheckCircle, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
+import founderImage from "@/assets/founder-profile.jpg";
 
 const Leadership = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,7 +34,7 @@ const Leadership = () => {
       "Former Vice President at premier investment firms",
       "Recognized thought leader with regular contributions to financial publications"
     ],
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=800&fit=crop"
+    image: founderImage
   };
 
   const teamMembers = [
@@ -172,31 +173,8 @@ const Leadership = () => {
                 <img
                   src={founderCEO.image}
                   alt={founderCEO.name}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-700"
                 />
-                {/* Decorative Elements */}
-                <div className="absolute bottom-8 right-8 bg-card/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-border">
-                  <div className="text-sm text-muted-foreground mb-1">Revenue</div>
-                  <div className="text-2xl font-bold text-primary">$193,000</div>
-                  <div className="flex gap-1 mt-3">
-                    {[40, 60, 45, 70, 55, 80, 65].map((height, idx) => (
-                      <div
-                        key={idx}
-                        className={`w-4 rounded-full ${idx % 2 === 0 ? 'bg-primary' : 'bg-[#a8d530]'}`}
-                        style={{ height: `${height}px` }}
-                      />
-                    ))}
-                  </div>
-                </div>
-                
-                <div className="absolute bottom-8 left-8 w-32 h-32 bg-[#a8d530] rounded-full flex items-center justify-center shadow-xl border-4 border-card">
-                  <div className="text-center">
-                    <ArrowUpRight className="w-8 h-8 text-black mx-auto mb-1" />
-                    <div className="text-black text-[10px] font-bold uppercase tracking-wider leading-tight" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}>
-                      BRANDING AND DEVELOPMENT COOL
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
