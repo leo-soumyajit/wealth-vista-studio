@@ -1,7 +1,47 @@
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState, useEffect, useRef } from "react";
 
 const Hero = () => {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const statsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            setHasAnimated(true);
+            let current = 0;
+            const target = 27;
+            const increment = 1;
+            const duration = 2000; // 2 seconds
+            const stepTime = duration / target;
+
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                setCount(target);
+                clearInterval(timer);
+              } else {
+                setCount(current);
+              }
+            }, stepTime);
+
+            return () => clearInterval(timer);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasAnimated]);
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-cyan-400 dark:bg-gray-950">
       {/* Large Text Watermark at Bottom - Behind image - Centered */}
@@ -59,7 +99,7 @@ const Hero = () => {
           {/* Right Content - Stats and Description */}
           <div className="relative animate-fade-in-up delay-300 space-y-6 lg:ml-auto">
             {/* Stats Card */}
-            <div className="bg-white dark:bg-gray-900 rounded-2xl p-3 md:p-4 shadow-lg inline-block">
+            <div ref={statsRef} className="bg-white dark:bg-gray-900 rounded-2xl p-3 md:p-4 shadow-lg inline-block">
               <div className="flex items-start gap-2 md:gap-3">
                 {/* Circular Image */}
                 <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl overflow-hidden flex-shrink-0 bg-gray-200">
@@ -71,7 +111,9 @@ const Hero = () => {
                 </div>
                 
                 <div>
-                  <div className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white mb-0.5">27+</div>
+                  <div className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white mb-0.5">
+                    {count}+
+                  </div>
                   <div className="text-[10px] md:text-xs text-gray-600 dark:text-gray-400 font-medium leading-tight">
                     Years of
                     <br />
