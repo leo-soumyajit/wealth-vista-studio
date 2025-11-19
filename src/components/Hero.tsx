@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-cyan-400 dark:bg-gray-950">
-      {/* Large Text Watermark at Bottom - Behind image */}
-      <div className="absolute bottom-0 left-0 right-0 overflow-hidden pointer-events-none z-0">
-        <div className="text-[8rem] md:text-[12rem] lg:text-[14rem] font-bold text-teal-700/30 dark:text-teal-800/30 leading-none whitespace-nowrap">
+      {/* Large Text Watermark at Bottom - Behind image - Centered */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 overflow-hidden pointer-events-none z-0">
+        <div className="text-[8rem] md:text-[12rem] lg:text-[16rem] font-bold text-teal-700/30 dark:text-teal-800/30 leading-none whitespace-nowrap">
           moneytree
         </div>
       </div>
@@ -47,12 +47,12 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Center Content - Professional Image */}
+          {/* Center Content - Professional Image - Larger */}
           <div className="relative flex justify-center animate-fade-in-up delay-200 lg:mx-4 z-30">
             <img
               src="https://res.cloudinary.com/dkgwi1xvx/image/upload/v1763571734/Gemini_Generated_Image_di4uj2di4uj2di4u-removebg-preview_c6cnx0.png"
               alt="Professional"
-              className="w-full max-w-[450px] lg:max-w-[550px] xl:max-w-[600px] h-auto object-contain relative z-30"
+              className="w-full max-w-[500px] lg:max-w-[650px] xl:max-w-[750px] h-auto object-contain relative z-30"
             />
           </div>
 
