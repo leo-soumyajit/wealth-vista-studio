@@ -43,7 +43,7 @@ const Hero = () => {
     return () => observer.disconnect();
   }, [hasAnimated]);
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-cyan-400 dark:bg-gray-950">
+    <section className="relative min-h-screen flex items-start overflow-hidden bg-cyan-400 dark:bg-gray-950 pt-20 sm:pt-24">
       {/* Large Text Watermark at Bottom - Behind image - Centered */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 overflow-hidden pointer-events-none z-0">
         <div className="text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] font-bold text-teal-700/25 dark:text-teal-800/25 leading-none whitespace-nowrap">
@@ -65,7 +65,7 @@ const Hero = () => {
         />
       </div>
 
-      <div className="container mx-auto px-4 pt-2 pb-8 sm:pt-6 sm:pb-12 lg:py-20 relative z-20">
+      <div className="container mx-auto px-4 pb-8 sm:pb-12 lg:pb-20 relative z-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start max-w-7xl mx-auto">
           {/* Left Content - Text */}
           <div className="text-left animate-fade-in-up">
