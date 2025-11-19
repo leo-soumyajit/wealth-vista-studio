@@ -57,7 +57,7 @@ const Hero = () => {
       </svg>
 
       {/* Center Content - Professional Image - Positioned at Bottom */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex justify-center animate-fade-in-up delay-200 z-10 pointer-events-none">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex justify-center z-10 pointer-events-none">
         <img
           src="https://res.cloudinary.com/dkgwi1xvx/image/upload/v1763571734/Gemini_Generated_Image_di4uj2di4uj2di4u-removebg-preview_c6cnx0.png"
           alt="Professional"
