@@ -1,7 +1,27 @@
 import { Linkedin, Mail, CheckCircle, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useEffect, useRef, useState } from "react";
 
 const Leadership = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
   const founderCEO = {
     name: "Rajesh Kumar",
     position: "Founder & CEO",
@@ -62,19 +82,32 @@ const Leadership = () => {
         </div>
 
         {/* Featured CEO Section */}
-        <div className="mb-20 bg-gradient-to-br from-card via-card/95 to-primary/5 rounded-3xl border border-border overflow-hidden">
+        <div 
+          ref={sectionRef}
+          className="mb-20 bg-gradient-to-br from-card via-card/95 to-primary/5 rounded-3xl border border-border overflow-hidden"
+        >
           <div className="grid lg:grid-cols-2 gap-8 items-center p-8 lg:p-12">
             {/* Left Content */}
             <div className="space-y-8">
               {/* Badge */}
-              <div className="inline-block">
+              <div 
+                className={`inline-block transition-all duration-700 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+                style={{ transitionDelay: '100ms' }}
+              >
                 <span className="px-6 py-2 bg-[#a8d530] text-black text-sm font-bold rounded-full uppercase tracking-wider">
                   Why Choose Us
                 </span>
               </div>
 
               {/* Heading */}
-              <h3 className="text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight">
+              <h3 
+                className={`text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight transition-all duration-700 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+                style={{ transitionDelay: '200ms' }}
+              >
                 Build A Thriving Community And{" "}
                 <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
                   Unlock Limitless Possibilities.
@@ -84,7 +117,12 @@ const Leadership = () => {
               {/* Info Cards Grid */}
               <div className="grid md:grid-cols-2 gap-4">
                 {/* Headquarter Card */}
-                <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-2xl p-6">
+                <div 
+                  className={`bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-2xl p-6 transition-all duration-700 ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  }`}
+                  style={{ transitionDelay: '300ms' }}
+                >
                   <h4 className="text-xl font-bold mb-3">Headquarter -</h4>
                   <p className="text-foreground/80">
                     {founderCEO.headquarters.address}
@@ -93,7 +131,12 @@ const Leadership = () => {
                 </div>
 
                 {/* Email Card */}
-                <div className="bg-[#a8d530] rounded-2xl p-6">
+                <div 
+                  className={`bg-[#a8d530] rounded-2xl p-6 transition-all duration-700 ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  }`}
+                  style={{ transitionDelay: '400ms' }}
+                >
                   <h4 className="text-xl font-bold text-black mb-3">Email Us -</h4>
                   {founderCEO.emails.map((email, idx) => (
                     <p key={idx} className="text-black/80">
@@ -104,13 +147,24 @@ const Leadership = () => {
               </div>
 
               {/* Advantages List */}
-              <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-2xl p-6">
+              <div 
+                className={`bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-2xl p-6 transition-all duration-700 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+                style={{ transitionDelay: '500ms' }}
+              >
                 <h4 className="text-xl font-bold mb-4">
                   The Advantages of Connecting with Us:
                 </h4>
                 <div className="grid md:grid-cols-2 gap-3">
                   {founderCEO.advantages.map((advantage, idx) => (
-                    <div key={idx} className="flex items-start gap-2">
+                    <div 
+                      key={idx} 
+                      className={`flex items-start gap-2 transition-all duration-500 ${
+                        isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
+                      }`}
+                      style={{ transitionDelay: `${600 + idx * 100}ms` }}
+                    >
                       <CheckCircle className="w-5 h-5 text-[#a8d530] flex-shrink-0 mt-0.5" />
                       <span className="text-foreground/80 text-sm">{advantage}</span>
                     </div>
@@ -121,14 +175,22 @@ const Leadership = () => {
               {/* Get Started Button */}
               <Button 
                 size="lg"
-                className="bg-[#a8d530] hover:bg-[#a8d530]/90 text-black font-bold rounded-full px-8"
+                className={`bg-[#a8d530] hover:bg-[#a8d530]/90 text-black font-bold rounded-full px-8 transition-all duration-700 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+                style={{ transitionDelay: '1200ms' }}
               >
                 Get Started <ArrowUpRight className="ml-2 w-5 h-5" />
               </Button>
             </div>
 
             {/* Right Image */}
-            <div className="relative lg:min-h-[600px]">
+            <div 
+              className={`relative lg:min-h-[600px] transition-all duration-1000 ${
+                isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+              }`}
+              style={{ transitionDelay: '300ms' }}
+            >
               <div className="relative w-full h-full rounded-2xl overflow-hidden group">
                 <img
                   src={founderCEO.image}
