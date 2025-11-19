@@ -43,52 +43,68 @@ const About = () => {
   return (
     <section id="about" className="py-24 bg-background" ref={sectionRef}>
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left Side - Images */}
-          <div className="relative">
-            {/* Main Image - Colored with border */}
-            <div className="relative mb-6 lg:mb-0">
-              <div className="absolute -inset-4 bg-primary/20 rounded-[2rem] -z-10" />
-              <img
-                src={aboutTeamMeeting}
-                alt="Team Meeting"
-                className="w-full h-[400px] object-cover rounded-[2rem] shadow-lg"
-              />
-              
-              {/* Skilled Team Badge */}
-              <div className="absolute bottom-6 right-6 bg-card/95 backdrop-blur-sm px-6 py-3 rounded-xl shadow-lg border border-border">
-                <p className="text-sm font-semibold text-foreground">Skilled Team</p>
-                <div className="flex -space-x-2 mt-2">
-                  <img
-                    src={teamMember1}
-                    alt="Team member"
-                    className="w-8 h-8 rounded-full border-2 border-card object-cover"
-                  />
-                  <img
-                    src={teamMember2}
-                    alt="Team member"
-                    className="w-8 h-8 rounded-full border-2 border-card object-cover"
-                  />
-                  <img
-                    src={teamMember3}
-                    alt="Team member"
-                    className="w-8 h-8 rounded-full border-2 border-card object-cover"
-                  />
-                  <div className="w-8 h-8 rounded-full border-2 border-card bg-primary flex items-center justify-center text-xs font-bold text-primary-foreground">
-                    9+
-                  </div>
+          <div className="relative h-[600px] lg:h-[700px]">
+            {/* Main Image - Colored with teal border */}
+            <div className="relative">
+              <div className="absolute -inset-3 bg-cyan-500/30 rounded-[2rem] blur-sm" />
+              <div className="relative rounded-[2rem] border-2 border-cyan-500/50 overflow-hidden">
+                <img
+                  src={aboutTeamMeeting}
+                  alt="Team Meeting"
+                  className="w-full h-[350px] object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Bottom Left Small Image Strip */}
+            <div className="absolute bottom-[280px] left-0 w-[45%] z-10">
+              <div className="absolute -inset-2 bg-cyan-500/30 rounded-[1.5rem] blur-sm" />
+              <div className="relative rounded-[1.5rem] border-2 border-cyan-500/50 overflow-hidden">
+                <img
+                  src={aboutTeamMeeting}
+                  alt="Office detail"
+                  className="w-full h-[120px] object-cover object-bottom"
+                />
+              </div>
+            </div>
+
+            {/* Skilled Team Badge */}
+            <div className="absolute bottom-[220px] left-[35%] transform -translate-x-1/2 bg-[#1a3a3a] backdrop-blur-sm px-6 py-3 rounded-2xl shadow-2xl border border-cyan-500/30 z-20">
+              <p className="text-sm font-semibold text-white mb-2">Skilled Team</p>
+              <div className="flex -space-x-2">
+                <img
+                  src={teamMember1}
+                  alt="Team member"
+                  className="w-9 h-9 rounded-full border-2 border-[#1a3a3a] object-cover"
+                />
+                <img
+                  src={teamMember2}
+                  alt="Team member"
+                  className="w-9 h-9 rounded-full border-2 border-[#1a3a3a] object-cover"
+                />
+                <img
+                  src={teamMember3}
+                  alt="Team member"
+                  className="w-9 h-9 rounded-full border-2 border-[#1a3a3a] object-cover"
+                />
+                <div className="w-9 h-9 rounded-full border-2 border-[#1a3a3a] bg-[#a8d530] flex items-center justify-center text-xs font-bold text-black">
+                  9+
                 </div>
               </div>
             </div>
 
-            {/* Bottom Image - Grayscale with hover effect */}
-            <div className="absolute bottom-0 right-0 w-1/2 lg:w-2/3">
-              <div className="absolute -inset-4 bg-primary/20 rounded-[2rem] -z-10" />
-              <img
-                src={aboutProfessionalWork}
-                alt="Professional at work"
-                className="w-full h-[300px] object-cover rounded-[2rem] shadow-lg grayscale hover:grayscale-0 transition-all duration-500"
-              />
+            {/* Bottom Right Image - Grayscale with hover effect */}
+            <div className="absolute bottom-0 right-0 w-[58%]">
+              <div className="absolute -inset-3 bg-cyan-500/30 rounded-[2rem] blur-sm" />
+              <div className="relative rounded-[2rem] border-2 border-cyan-500/50 overflow-hidden">
+                <img
+                  src={aboutProfessionalWork}
+                  alt="Professional at work"
+                  className="w-full h-[320px] object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                />
+              </div>
             </div>
           </div>
 
