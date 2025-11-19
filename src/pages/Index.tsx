@@ -12,6 +12,7 @@ import FAQ from "@/components/FAQ";
 import Partners from "@/components/Partners";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 
 const Index = () => {
   useEffect(() => {
@@ -51,6 +52,7 @@ const Index = () => {
       <Partners />
       <Contact />
       <Footer />
+      <WhatsAppWidget />
     </div>
   );
 };
