@@ -160,22 +160,47 @@ const Leadership = () => {
               style={{ transitionDelay: '300ms' }}
             >
               <div className="relative w-full h-full group lg:h-[700px]">
-                {/* Multiple Animated Dotted Circles behind entire image */}
+                {/* Multiple Animated Circles with single dots */}
                 <div className="absolute inset-0 flex items-center justify-center -z-10">
                   {/* Outermost circle - slowest */}
-                  <div className="absolute w-[90%] h-[90%] border-4 border-dotted border-[#a8d530]/30 rounded-full animate-spin" style={{ animationDuration: '30s' }}></div>
+                  <div className="absolute w-[90%] h-[90%] animate-spin" style={{ animationDuration: '30s' }}>
+                    <svg className="w-full h-full" viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" r="48" fill="none" stroke="#a8d530" strokeWidth="0.3" opacity="0.3"/>
+                      <circle cx="50" cy="2" r="2" fill="#a8d530" opacity="0.4"/>
+                    </svg>
+                  </div>
                   
                   {/* Second circle */}
-                  <div className="absolute w-[75%] h-[75%] border-4 border-dashed border-[#a8d530]/35 rounded-full animate-spin" style={{ animationDuration: '20s', animationDirection: 'reverse' }}></div>
+                  <div className="absolute w-[75%] h-[75%] animate-spin" style={{ animationDuration: '20s', animationDirection: 'reverse' }}>
+                    <svg className="w-full h-full" viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" r="48" fill="none" stroke="#a8d530" strokeWidth="0.3" opacity="0.35"/>
+                      <circle cx="50" cy="2" r="2.5" fill="#a8d530" opacity="0.45"/>
+                    </svg>
+                  </div>
                   
                   {/* Third circle */}
-                  <div className="absolute w-[60%] h-[60%] border-3 border-dotted border-[#a8d530]/40 rounded-full animate-spin" style={{ animationDuration: '15s' }}></div>
+                  <div className="absolute w-[60%] h-[60%] animate-spin" style={{ animationDuration: '15s' }}>
+                    <svg className="w-full h-full" viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" r="48" fill="none" stroke="#a8d530" strokeWidth="0.3" opacity="0.4"/>
+                      <circle cx="50" cy="2" r="2.5" fill="#a8d530" opacity="0.5"/>
+                    </svg>
+                  </div>
                   
                   {/* Fourth circle */}
-                  <div className="absolute w-[45%] h-[45%] border-3 border-dashed border-[#a8d530]/45 rounded-full animate-spin" style={{ animationDuration: '25s', animationDirection: 'reverse' }}></div>
+                  <div className="absolute w-[45%] h-[45%] animate-spin" style={{ animationDuration: '25s', animationDirection: 'reverse' }}>
+                    <svg className="w-full h-full" viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" r="48" fill="none" stroke="#a8d530" strokeWidth="0.3" opacity="0.45"/>
+                      <circle cx="50" cy="2" r="3" fill="#a8d530" opacity="0.55"/>
+                    </svg>
+                  </div>
                   
                   {/* Innermost circle - fastest */}
-                  <div className="absolute w-[30%] h-[30%] border-2 border-dotted border-[#a8d530]/50 rounded-full animate-spin" style={{ animationDuration: '10s' }}></div>
+                  <div className="absolute w-[30%] h-[30%] animate-spin" style={{ animationDuration: '10s' }}>
+                    <svg className="w-full h-full" viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" r="48" fill="none" stroke="#a8d530" strokeWidth="0.3" opacity="0.5"/>
+                      <circle cx="50" cy="2" r="3" fill="#a8d530" opacity="0.6"/>
+                    </svg>
+                  </div>
                 </div>
                 
                 <img
