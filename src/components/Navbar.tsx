@@ -64,9 +64,9 @@ const Navbar = () => {
           : "bg-background/40 backdrop-blur-lg border border-border/30"
       } rounded-full`}
     >
-      <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-16">
-          <a href="#" className="text-base sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent leading-tight">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between h-14 sm:h-16">
+          <a href="#" className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent leading-tight whitespace-nowrap overflow-hidden text-ellipsis max-w-[60%] sm:max-w-none">
             Smart Investment Solutions
           </a>
 
