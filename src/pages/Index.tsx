@@ -8,6 +8,7 @@ import Leadership from "@/components/Leadership";
 import Gallery from "@/components/Gallery";
 import News from "@/components/News";
 import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
 import Partners from "@/components/Partners";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -46,6 +47,7 @@ const Index = () => {
       <Gallery />
       <News />
       <Testimonials />
+      <FAQ />
       <Partners />
       <Contact />
       <Footer />
