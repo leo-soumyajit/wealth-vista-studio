@@ -94,7 +94,7 @@ const About = () => {
             {/* Main Image - Colored with teal border */}
             <div className={`relative transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <div className="absolute -inset-3 bg-cyan-500/30 rounded-[2rem] blur-sm" />
-              <div className="relative rounded-[2rem] border-2 border-cyan-500/50 overflow-hidden">
+              <div className="relative rounded-[2rem] border border-cyan-500 overflow-hidden">
                 <img
                   src={aboutTeamMeeting}
                   alt="Team Meeting"
@@ -106,7 +106,7 @@ const About = () => {
             {/* Bottom Left Small Image Strip */}
             <div className={`absolute bottom-[280px] left-0 w-[45%] z-10 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <div className="absolute -inset-2 bg-cyan-500/30 rounded-[1.5rem] blur-sm" />
-              <div className="relative rounded-[1.5rem] border-2 border-cyan-500/50 overflow-hidden">
+              <div className="relative rounded-[1.5rem] border border-cyan-500 overflow-hidden">
                 <img
                   src={aboutTeamMeeting}
                   alt="Office detail"
@@ -143,11 +143,11 @@ const About = () => {
             {/* Bottom Right Image - Grayscale with hover effect */}
             <div className={`absolute bottom-0 right-0 w-[58%] transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <div className="absolute -inset-3 bg-cyan-500/30 rounded-[2rem] blur-sm" />
-              <div className="relative rounded-[2rem] border-2 border-cyan-500/50 overflow-hidden">
+              <div className="relative rounded-[2rem] border border-cyan-500 overflow-hidden">
                 <img
                   src={aboutProfessionalWork}
                   alt="Professional at work"
-                  className="w-full h-[320px] object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                  className="w-full h-[320px] object-cover object-top grayscale hover:grayscale-0 transition-all duration-500"
                 />
               </div>
             </div>
