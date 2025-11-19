@@ -12,7 +12,11 @@ import { useState, useEffect, useRef } from "react";
 const About = () => {
   const [progressValue, setProgressValue] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [typedChars, setTypedChars] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  const headingText = "The Journey Behind Our Business Success";
+  const firstLineLength = "The Journey Behind Our ".length;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,6 +34,15 @@ const About = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (isVisible && typedChars < headingText.length) {
+      const timer = setTimeout(() => {
+        setTypedChars((prev) => prev + 1);
+      }, 50); // 50ms per character for smooth typing effect
+      return () => clearTimeout(timer);
+    }
+  }, [isVisible, typedChars, headingText.length]);
 
   useEffect(() => {
     if (isVisible && progressValue < 88) {
@@ -116,12 +129,31 @@ const About = () => {
               </span>
             </div>
 
-            <h2 className={`text-4xl md:text-5xl font-bold leading-tight transition-all duration-1000 ease-out delay-100 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
-              <span className={`inline-block transition-all duration-1000 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                The Journey Behind Our{" "}
-              </span>
-              <span className={`inline-block bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                Business Success
+            <h2 className="text-4xl md:text-5xl font-bold leading-tight min-h-[120px]">
+              <span className="inline-block">
+                {headingText.split('').map((char, index) => {
+                  const isVisible = index < typedChars;
+                  const isGradientText = index >= firstLineLength;
+                  
+                  return (
+                    <span
+                      key={index}
+                      className={`inline-block transition-all duration-300 ${
+                        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+                      } ${
+                        isGradientText 
+                          ? 'bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent' 
+                          : ''
+                      }`}
+                      style={{
+                        transitionDelay: `${index * 30}ms`
+                      }}
+                    >
+                      {char === ' ' ? '\u00A0' : char}
+                    </span>
+                  );
+                })}
+                <span className={`inline-block w-0.5 h-8 ml-1 bg-primary ${typedChars >= headingText.length ? 'opacity-0' : 'opacity-100 animate-pulse'}`} />
               </span>
             </h2>
 
