@@ -160,10 +160,17 @@ const Leadership = () => {
               style={{ transitionDelay: '300ms' }}
             >
               <div className="relative w-full h-full group lg:h-[700px]">
+                {/* Animated Yellow Circle behind head */}
+                <div className="absolute top-[15%] left-1/2 -translate-x-1/2 w-64 h-64 lg:w-80 lg:h-80 -z-10">
+                  <div className="absolute inset-0 bg-[#a8d530]/20 rounded-full animate-spin" style={{ animationDuration: '20s' }}></div>
+                  <div className="absolute inset-4 bg-[#a8d530]/15 rounded-full animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}></div>
+                  <div className="absolute inset-8 bg-[#a8d530]/10 rounded-full animate-spin" style={{ animationDuration: '25s' }}></div>
+                </div>
+                
                 <img
                   src={founderCEO.image}
                   alt={founderCEO.name}
-                  className="w-full h-full object-contain object-bottom grayscale group-hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-full object-contain object-bottom grayscale group-hover:grayscale-0 transition-all duration-700 relative z-10"
                 />
               </div>
             </div>
