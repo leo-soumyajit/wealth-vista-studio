@@ -1,0 +1,185 @@
+import { useState, useEffect, useRef } from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import aboutTeamMeeting from "@/assets/about-team-meeting.jpg";
+
+const FAQ = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const faqs = [
+    {
+      question: "How Can Business Consulting Benefit My Company?",
+      answer:
+        "Business consulting provides expert guidance to improve operations, increase efficiency, and drive growth. Our consultants analyze your business processes, identify bottlenecks, and implement strategic solutions tailored to your specific needs.",
+    },
+    {
+      question: "What Are the Costs of Your Consulting Services?",
+      answer:
+        "Our consulting services are customized to your needs, with pricing based on project scope, duration, and complexity. We offer flexible engagement models including hourly rates, project-based fees, and retainer agreements. Contact us for a detailed quote.",
+    },
+    {
+      question: "How Do You Measure the Success of a Project?",
+      answer:
+        "We establish clear KPIs and success metrics at the project outset, including ROI, efficiency improvements, revenue growth, and operational benchmarks. Regular progress reports and data-driven insights ensure transparency and accountability throughout the engagement.",
+    },
+    {
+      question: "Do You Provide Remote Consulting Services?",
+      answer:
+        "Yes, we offer comprehensive remote consulting services using advanced collaboration tools and platforms. Our virtual consulting model ensures seamless communication, real-time updates, and effective project delivery regardless of geographical location.",
+    },
+    {
+      question: "What Industries Do You Specialize In?",
+      answer:
+        "We specialize in financial services, wealth management, investment advisory, and fintech solutions. Our team has deep expertise in banking, insurance, asset management, and emerging financial technologies, helping clients navigate complex regulatory environments and market dynamics.",
+    },
+  ];
+
+  return (
+    <section
+      id="faq"
+      ref={sectionRef}
+      className="relative py-24 bg-gradient-to-br from-[#0d4b4b] via-[#0f5555] to-[#0d4b4b] overflow-hidden"
+    >
+      {/* Dotted Pattern Background */}
+      <div className="absolute inset-0 opacity-20">
+        <div
+          className="w-full h-full"
+          style={{
+            backgroundImage: `radial-gradient(circle, rgba(255, 255, 255, 0.15) 1px, transparent 1px)`,
+            backgroundSize: "20px 20px",
+          }}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Side - Image */}
+          <div
+            className={`relative h-[500px] lg:h-[600px] transition-all duration-1000 ${
+              isVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-12"
+            }`}
+          >
+            <div className="absolute inset-0 rounded-3xl overflow-hidden">
+              <img
+                src={aboutTeamMeeting}
+                alt="Team collaboration"
+                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              />
+              {/* Dark overlay */}
+              <div className="absolute inset-0 bg-black/30" />
+            </div>
+          </div>
+
+          {/* Right Side - FAQ Content */}
+          <div className="space-y-8">
+            {/* Badge */}
+            <div
+              className={`inline-block transition-all duration-1000 ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+            >
+              <span className="px-6 py-2 bg-[#a8d530] text-black text-sm font-bold rounded-full uppercase tracking-wide">
+                FAQ'S
+              </span>
+            </div>
+
+            {/* Heading */}
+            <h2
+              className={`text-4xl md:text-5xl font-bold leading-tight text-white transition-all duration-1000 delay-100 ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+            >
+              Frequently Asked Questions
+            </h2>
+
+            {/* Description */}
+            <p
+              className={`text-white/80 text-lg leading-relaxed transition-all duration-1000 delay-200 ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+            >
+              MoneyTree Wealth is the hub for early adopters and innovation
+              enthusiasts, offering vibrant, imaginative technology before it
+              becomes mainstream.
+            </p>
+
+            {/* CTA Button */}
+            <div
+              className={`transition-all duration-1000 delay-300 ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+            >
+              <Button
+                size="lg"
+                className="bg-white text-black hover:bg-white/90 font-semibold px-8 rounded-md"
+              >
+                Get A Quote
+              </Button>
+            </div>
+
+            {/* FAQ Accordion */}
+            <div
+              className={`transition-all duration-1000 delay-400 ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-4"
+              }`}
+            >
+              <Accordion type="single" collapsible className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <AccordionItem
+                    key={index}
+                    value={`item-${index}`}
+                    className="bg-[#0a3a3a]/50 backdrop-blur-sm border border-white/10 rounded-lg px-6 py-2 hover:bg-[#0a3a3a]/70 transition-all duration-300"
+                  >
+                    <AccordionTrigger className="text-white hover:text-[#a8d530] text-left font-semibold text-base py-4 hover:no-underline">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-white/70 text-sm leading-relaxed pb-4">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default FAQ;
