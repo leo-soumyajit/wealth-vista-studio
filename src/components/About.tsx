@@ -14,9 +14,40 @@ const About = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [typedChars, setTypedChars] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const audioContextRef = useRef<AudioContext | null>(null);
 
   const headingText = "The Journey Behind Our Business Success";
   const firstLineLength = "The Journey Behind Our ".length;
+
+  // Initialize audio context
+  useEffect(() => {
+    audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+    return () => {
+      audioContextRef.current?.close();
+    };
+  }, []);
+
+  // Play typing sound
+  const playTypeSound = () => {
+    if (!audioContextRef.current) return;
+    
+    const ctx = audioContextRef.current;
+    const oscillator = ctx.createOscillator();
+    const gainNode = ctx.createGain();
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(ctx.destination);
+    
+    // Create a subtle click sound
+    oscillator.frequency.value = 800;
+    oscillator.type = 'sine';
+    
+    gainNode.gain.setValueAtTime(0.1, ctx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.05);
+    
+    oscillator.start(ctx.currentTime);
+    oscillator.stop(ctx.currentTime + 0.05);
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,6 +70,7 @@ const About = () => {
     if (isVisible && typedChars < headingText.length) {
       const timer = setTimeout(() => {
         setTypedChars((prev) => prev + 1);
+        playTypeSound();
       }, 50); // 50ms per character for smooth typing effect
       return () => clearTimeout(timer);
     }
